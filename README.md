@@ -2,13 +2,13 @@
 
 # nx-remotecache-custom
 
-`nx-remotecache-custom` is a simple package which includes a helper function to create custom nx remote cache implementations. Only supply functions for:
+`nx-remotecache-custom` is a simple package which includes a helper function to create custom nx remote cache implementations. You'll only need to add functions for:
 
 1. storing a file / buffer
 2. retrieving a file / buffer
 3. checking if a file / buffer exists
 
-and `createCustomRunner()` is taking care of everything. Not convinced yet? The package will also:
+and `createCustomRunner()` is taking care of everything else. Not convinced yet? The package will also:
 
 - Print beautiful & colored nx-style messages to the console 💅🎆
 - Allow you to execute asynchronous code in the setup phase of your runner 🤖
