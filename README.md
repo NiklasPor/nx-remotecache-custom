@@ -1,0 +1,78 @@
+[![npm package link](https://img.shields.io/npm/v/nx-remotecache-custom)](https://www.npmjs.com/package/nx-remotecache-custom)
+
+# nx-remotecache-custom
+
+`nx-remotecache-custom` is a simple package which includes a helper function to create custom nx remote cache implementations. Only supply functions for:
+
+1. storing a file / buffer
+2. retrieving a file / buffer
+3. checking if a file / buffer exists
+
+and `createCustomRunner()` is taking care of everything. Not convinced yet? The package will also:
+
+- Print beautiful & colored nx-style messages to the console 💅🎆
+- Allow you to execute asynchronous code in the setup phase of your runner 🤖
+- Handle all thrown errors ➡ No broken builds to offline remote caches 🚀
+- Automagically zip all the cached files ➡ Minimal storage & traffic consumption 📦
+- Provide a small defined and documented API 📚
+
+## Usage
+
+```sh
+npm i nx-remotecache-custom
+```
+
+```ts
+// define custom parameters for your nx.json here
+interface MyRunnerOptions {
+  remoteUrl: string;
+}
+
+export default createCustomRunner<MyRunnerOptions>(async (options) => {
+  // initialize the connection to your remote storage here
+  const myStorage = new MyStorage(options.remoteUrl);
+
+  return {
+    // name is used for logging purposes
+    name: "My Storage",
+
+    // fileExists checks whether a file exists on your remote storage
+    fileExists: (filename) => myStorage.exists(filename),
+
+    // retrieveFile downloads a file from your remote storage
+    retrieveFile: (filename) => myStorage.download(),
+
+    // storeFile uploads a file from a buffer to your remote storage
+    storeFile: (filename, buffer) => myStorage.upload(filename, buffer),
+  };
+});
+```
+
+```json
+{
+  "name": "nx-remotecache-mystorage",
+  "main": "index.js"
+}
+```
+
+After this your package is already ready for usage. Publish it to npm (or an internal registry) and consume it in your client library. Install it and adjust your `nx.json` to use the newly created runner:
+
+```json
+"tasksRunnerOptions": {
+  "default": {
+    "runner": "nx-remotecache-mystorage",
+    "options": {
+      "remoteUrl": "http://127.0.0.1:1337",
+      "cacheableOperations": ["build", "test", "lint", "e2e"]
+    }
+  }
+}
+```
+
+> For a more in-depth code example you can take a look at the implementation of [nx-remotecache-azure](https://github.com/NiklasPor/nx-remotecache-azure) which uses this package to implement a nx cache on the Azure Blob Storage.
+
+## Already Existing Custom Runners
+
+| Runner                                                                     | Storage             |
+| -------------------------------------------------------------------------- | ------------------- |
+| [nx-remotecache-azure](https://www.npmjs.com/package/nx-remotecache-azure) |  Azure Blob Storage |
