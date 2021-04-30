@@ -5,7 +5,8 @@
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
-    "build": "rm -rf dist && tsc && cp package.json dist/package.json"
+    "build": "rm -rf dist && tsc && cp package.json dist/package.json",
+    "release": "npm run build && cd dist && npm publish && cd .."
   },
   "repository": {
     "type": "git",
@@ -28,8 +29,5 @@
   },
   "peerDependencies": {
     "@nrwl/workspace": ">=9.2.2"
-  },
-  "files": [
-    "index.js"
-  ]
+  }
 }
