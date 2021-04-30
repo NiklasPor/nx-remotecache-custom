@@ -5,7 +5,7 @@
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
-    "build": "rm -rf dist && tsc && cp package.json dist/package.json",
+    "build": "rm -rf dist && tsc && cp package.json dist/package.json && cp README.md dist/README.md && cp CHANGELOG.md dist/CHANGELOG.md",
     "release": "npm run build && cd dist && npm publish && cd .."
   },
   "repository": {
