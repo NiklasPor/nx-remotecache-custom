@@ -12,6 +12,17 @@
     "type": "git",
     "url": "git+https://github.com/NiklasPor/nx-remotecache-custom.git"
   },
+  "keywords": [
+    "nx",
+    "remote",
+    "cache",
+    "remotecache",
+    "azure",
+    "blob",
+    "storage",
+    "angular",
+    "typescript"
+  ],
   "author": "Niklas Portmann",
   "license": "MIT",
   "bugs": {
