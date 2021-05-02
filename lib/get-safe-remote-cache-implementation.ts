@@ -43,7 +43,7 @@ export const getSafeRemoteCacheImplementation = async (
   options: CustomRunnerOptions
 ): Promise<SafeRemoteCacheImplementation | null> => {
   const verbose = !!options.verbose;
-  const silent = !!options.siltent;
+  const silent = !!options.silent;
 
   try {
     const implementation = await implementationPromise;

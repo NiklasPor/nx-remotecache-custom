@@ -9,5 +9,5 @@ export type CustomRunnerOptions<T extends Object = Object> = T &
     /**
      * Hide success and info logs. Only display warning and error logs.
      */
-    siltent?: boolean;
+    silent?: boolean;
   };
