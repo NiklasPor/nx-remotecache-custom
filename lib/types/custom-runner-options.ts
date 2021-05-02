@@ -3,7 +3,11 @@ import { DefaultTasksRunnerOptions } from "@nrwl/workspace/src/tasks-runner/defa
 export type CustomRunnerOptions<T extends Object = Object> = T &
   DefaultTasksRunnerOptions & {
     /**
-     * Sets verbose logging for `nx-remotecache-custom`
+     * Sets verbose error logging for `nx-remotecache-custom`
      */
     verbose?: boolean;
+    /**
+     * Hide success and info logs. Only display warning and error logs.
+     */
+    siltent?: boolean;
   };

@@ -8,11 +8,13 @@ const attachLogsToFileOperation = <T, OtherArgs extends unknown[]>({
   success,
   failure,
   verbose,
+  silent,
 }: {
   operation: (filename: string, ...args: OtherArgs) => Promise<T>;
   success?: (filename: string) => void;
   failure: (filename: string, error: unknown) => void;
   verbose: boolean;
+  silent: boolean;
 }): ((filename: string, ...args: OtherArgs) => Promise<T | null>) => async (
   filename,
   ...args
@@ -20,7 +22,9 @@ const attachLogsToFileOperation = <T, OtherArgs extends unknown[]>({
   try {
     const result = await operation(filename, ...args);
 
-    success?.(filename);
+    if (!silent) {
+      success?.(filename);
+    }
 
     return result;
   } catch (error) {
@@ -39,6 +43,7 @@ export const getSafeRemoteCacheImplementation = async (
   options: CustomRunnerOptions
 ): Promise<SafeRemoteCacheImplementation | null> => {
   const verbose = !!options.verbose;
+  const silent = !!options.siltent;
 
   try {
     const implementation = await implementationPromise;
@@ -52,6 +57,7 @@ export const getSafeRemoteCacheImplementation = async (
         failure: (filename, error) =>
           log.retrieveFailure(implementation, filename, error),
         verbose,
+        silent,
       }),
       storeFile: attachLogsToFileOperation({
         operation: storeFile,
@@ -59,12 +65,14 @@ export const getSafeRemoteCacheImplementation = async (
         failure: (filename, error) =>
           log.storeFailure(implementation, filename, error),
         verbose,
+        silent,
       }),
       fileExists: attachLogsToFileOperation({
         operation: fileExists,
         failure: (filename, error) =>
           log.checkFailure(implementation, filename, error),
         verbose,
+        silent,
       }),
     };
   } catch (error) {

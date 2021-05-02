@@ -71,24 +71,26 @@ After this your package is already ready for usage. Publish it to npm (or an int
 
 > For a more in-depth code example you can take a look at the implementation of [nx-remotecache-azure](https://github.com/NiklasPor/nx-remotecache-azure) which uses this package to implement a nx cache on the Azure Blob Storage.
 
+## Advanced Configuration
+
+| Option    | Description                                                                      |
+| --------- | -------------------------------------------------------------------------------- |
+| `verbose` | Set to receive full stack traces whenever errors occur. Best used for debugging. |
+| `silent`  | Set to mute success and info logs.                                               |
+
+```json
+"tasksRunnerOptions": {
+  "default": {
+    "options": {
+      "verbose": true,
+      "silent": true
+    }
+  }
+}
+```
+
 ## Already Existing Custom Runners
 
 | Runner                                                                     | Storage             |
 | -------------------------------------------------------------------------- | ------------------- |
 | [nx-remotecache-azure](https://www.npmjs.com/package/nx-remotecache-azure) |  Azure Blob Storage |
-
-## Advanced Configuration
-
-Set `verbose: true` to receive full stack traces whenever errors occur. Best used for debugging. Add it as an attribute on your runner inside the `nx.json`:
-
-```json
-"tasksRunnerOptions": {
-  "default": {
-    "runner": "nx-remotecache-mystorage",
-    "options": {
-      "verbose": true,
-      // ...
-    }
-  }
-}
-```
