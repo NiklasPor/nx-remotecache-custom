@@ -1,6 +1,8 @@
 import { RemoteCache } from "@nrwl/workspace/src/tasks-runner/default-tasks-runner";
 import AdmZip from "adm-zip";
-import { writeFile } from "fs/promises";
+import { promises } from "fs";
+const { writeFile } = promises;
+
 import { join } from "path";
 import { promisify } from "util";
 import { SafeRemoteCacheImplementation } from "./types/safe-remote-cache-implementation";
