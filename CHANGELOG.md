@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixed
 
-- `fs/promises` import broken in Node 12+
+- `fs/promises` import broken in Node 12 and below
 
 ## 0.0.4
 
