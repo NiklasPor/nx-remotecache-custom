@@ -29,6 +29,9 @@ interface MyRunnerOptions {
 }
 
 export default createCustomRunner<MyRunnerOptions>(async (options) => {
+  // initialize environment variables from dotfile
+  initEnv(options);
+
   // initialize the connection to your remote storage here
   const myStorage = new MyStorage(options.remoteUrl);
 

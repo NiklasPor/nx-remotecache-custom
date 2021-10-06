@@ -10,4 +10,14 @@ export type CustomRunnerOptions<T extends Object = Object> = T &
      * Hide success and info logs. Only display warning and error logs.
      */
     silent?: boolean;
+    /**
+     * Enables / disables reading `.env` files into the `proces.env`.
+     *
+     * @default true
+     */
+    dotenv?: boolean;
+    /**
+     * Path to folder containing `.env` files. Optional.
+     */
+    dotenvPath?: string;
   };

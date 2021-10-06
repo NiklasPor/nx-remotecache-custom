@@ -6,7 +6,9 @@
   "typings": "index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc && cp package.json dist/package.json && cp README.md dist/README.md && cp CHANGELOG.md dist/CHANGELOG.md",
-    "release": "npm run build && cd dist && npm publish && cd .."
+    "release": "npm run build && cd dist && npm publish && cd ..",
+    "local-release": "npm run build && cd dist && npm publish --registry=http://localhost:4873/ && cd ..",
+    "link": "npm run build && cd dist && npm link && cd .."
   },
   "repository": {
     "type": "git",
@@ -34,7 +36,8 @@
   },
   "dependencies": {
     "adm-zip": "^0.5.5",
-    "chalk": "^4.1.0"
+    "chalk": "^4.1.0",
+    "dotenv": "^8.2.0"
   },
   "peerDependencies": {
     "@nrwl/workspace": ">=9.2.2"
