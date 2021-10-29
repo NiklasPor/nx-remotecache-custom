@@ -92,8 +92,9 @@ After this your package is already ready for usage. Publish it to npm (or an int
 }
 ```
 
-## Already Existing Custom Runners
+## All Custom Runners
 
 | Runner                                                                     | Storage             |
 | -------------------------------------------------------------------------- | ------------------- |
 | [nx-remotecache-azure](https://www.npmjs.com/package/nx-remotecache-azure) |  Azure Blob Storage |
+| [nx-remotecache-minio](https://www.npmjs.com/package/nx-remotecache-minio) |  MinIO Storage      |
