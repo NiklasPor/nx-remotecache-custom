@@ -76,15 +76,17 @@ After this your package is already ready for usage. Publish it to npm (or an int
 
 ## Advanced Configuration
 
-| Option    | Description                                                                      |
-| --------- | -------------------------------------------------------------------------------- |
-| `verbose` | Set to receive full stack traces whenever errors occur. Best used for debugging. |
-| `silent`  | Set to mute success and info logs.                                               |
+| Option    | Env variable    | Description                                                                             |
+| --------- | --------------- | --------------------------------------------------------------------------------------- |
+| `name`    | `NX_CACHE_NAME` | Set to provide task runner name for logging. Overrides name provided in implementation. |
+| `verbose` | -               | Set to receive full stack traces whenever errors occur. Best used for debugging.        |
+| `silent`  | -               | Set to mute success and info logs.                                                      |
 
 ```json
 "tasksRunnerOptions": {
   "default": {
     "options": {
+      "name": "My Storage",
       "verbose": true,
       "silent": true
     }
