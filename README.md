@@ -76,11 +76,13 @@ After this your package is already ready for usage. Publish it to npm (or an int
 
 ## Advanced Configuration
 
-| Option    | Env variable    | Description                                                                             |
-| --------- | --------------- | --------------------------------------------------------------------------------------- |
-| `name`    | `NX_CACHE_NAME` | Set to provide task runner name for logging. Overrides name provided in implementation. |
-| `verbose` | -               | Set to receive full stack traces whenever errors occur. Best used for debugging.        |
-| `silent`  | -               | Set to mute success and info logs.                                                      |
+| Option       | Environment Variable / .env | Description                                                                                           |
+| ------------ | --------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `name`       | `NX_CACHE_NAME`             | Set to provide task runner name for logging. Overrides name provided in implementation.               |
+| `verbose`    |                             | Set to receive full stack traces whenever errors occur. Best used for debugging. **Default:** `false` |
+| `silent`     |                             | Set to mute success and info logs. **Default:** `false`                                               |
+| `dotenv`     |                             | Set to `false` to disable reading `.env` into `process.env`. **Default:** `true`                      |
+| `dotenvPath` |                             | Set to read `.env` files from a different folder.                                                     |
 
 ```json
 "tasksRunnerOptions": {
