@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2.0.0
+
+### Breaking Changes
+
+- Implementation & API is now stream based to reduce memory overhead.
+- All file system writes are now fully asynchronous.
+- Filenames are now suffixed to prevent incorrect cache hits with older versions.
+
 ## 1.1.0
 
 ### Added
