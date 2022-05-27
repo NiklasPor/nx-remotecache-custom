@@ -11,18 +11,18 @@ const formatSection = (...content: string[]) =>
 
 export const retrieveSuccess = (
   { name }: RemoteCacheImplementation,
-  hash: string
-) => log(formatSection(`Remote cache hit: ${green(name)}`, `Hash: ${hash}`));
+  file: string
+) => log(formatSection(`Remote cache hit: ${green(name)}`, `File: ${file}`));
 
 export const retrieveFailure = (
   { name }: RemoteCacheImplementation,
-  hash: string,
+  file: string,
   error: any
 ) =>
   log(
     formatSection(
       `${yellow(`Warning`)}: Failed to retrieve cache from ${red(name)}`,
-      `Hash: ${hash}`,
+      `File: ${file}`,
       `Error: ${error?.message}`
     )
   );
@@ -37,31 +37,31 @@ export const setupFailure = (error?: any) =>
 
 export const storeSuccess = (
   { name }: RemoteCacheImplementation,
-  hash: string
+  file: string
 ) =>
   log(
     formatSection(
       `Stored output to remote cache: ${green(name)}`,
-      `Hash: ${hash}`
+      `File: ${file}`
     )
   );
 
 export const storeFailure = (
   { name }: RemoteCacheImplementation,
-  hash: string,
+  file: string,
   error: any
 ) =>
   log(
     formatSection(
       `${yellow(`Warning`)}: Failed to store cache to ${red(name)}`,
-      `Hash: ${hash}`,
+      `File: ${file}`,
       `Error: ${error?.message}`
     )
   );
 
 export const checkFailure = (
   { name }: RemoteCacheImplementation,
-  hash: string,
+  file: string,
   error: any
 ) =>
   log(
@@ -69,7 +69,7 @@ export const checkFailure = (
       `${yellow(`Warning`)}: Failed to check if cache file exists in ${red(
         name
       )}`,
-      `Hash: ${hash}`,
+      `File: ${file}`,
       `Error: ${error?.message}`
     )
   );

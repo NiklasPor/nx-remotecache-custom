@@ -1,14 +1,11 @@
 import { RemoteCache } from "@nrwl/workspace/src/tasks-runner/default-tasks-runner";
-import AdmZip from "adm-zip";
-import { getCacheEntryPath } from "./get-cache-entry-path";
+import { Readable } from "stream";
+import { create } from "tar";
+import { getFileNameFromHash } from "./get-file-name-from-hash";
 import { SafeRemoteCacheImplementation } from "./types/safe-remote-cache-implementation";
 
-const zipFolder = (path: string): Buffer => {
-  const zip = new AdmZip();
-  zip.addLocalFolder(path);
-
-  return zip.toBuffer();
-};
+const archiveFolder = (cwd: string, folder: string): Readable =>
+  Readable.from(create({ gzip: true, C: cwd }, [folder]));
 
 export const createRemoteCacheStore = (
   safeImplementation: Promise<SafeRemoteCacheImplementation | null>
@@ -19,11 +16,11 @@ export const createRemoteCacheStore = (
     return false;
   }
 
+  const file = getFileNameFromHash(hash);
   const { storeFile } = implementation;
-  const source = getCacheEntryPath(hash, cacheDirectory);
-  const buffer = zipFolder(source);
+  const stream = archiveFolder(cacheDirectory, hash);
 
-  await storeFile(hash, buffer);
+  await storeFile(file, stream);
 
   return true;
 };

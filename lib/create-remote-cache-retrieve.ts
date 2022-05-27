@@ -1,20 +1,31 @@
 import { RemoteCache } from "@nrwl/workspace/src/tasks-runner/default-tasks-runner";
-import AdmZip from "adm-zip";
-import { writeFileSync } from "fs";
+import { mkdir, writeFile } from "fs/promises";
 import { join } from "path";
+import { pipeline } from "stream/promises";
+import { extract } from "tar";
+import { getFileNameFromHash } from "./get-file-name-from-hash";
 import { SafeRemoteCacheImplementation } from "./types/safe-remote-cache-implementation";
 
 const COMMIT_FILE_EXTENSION = ".commit";
 const COMMIT_FILE_CONTENT = "true";
 
-const extractZipBuffer = (buffer: Buffer, destination: string): void => {
-  const zip = new AdmZip(buffer);
-  zip.extractAllTo(destination, true);
+const extractFolder = async (
+  stream: NodeJS.ReadableStream,
+  destination: string
+) => {
+  await mkdir(destination, { recursive: true });
+  return await pipeline(
+    stream,
+    extract({
+      C: destination,
+      strip: 1,
+    })
+  );
 };
 
 const writeCommitFile = (destination: string) => {
   const commitFilePath = destination + COMMIT_FILE_EXTENSION;
-  writeFileSync(commitFilePath, COMMIT_FILE_CONTENT);
+  return writeFile(commitFilePath, COMMIT_FILE_CONTENT);
 };
 
 export const createRemoteCacheRetrieve = (
@@ -26,22 +37,23 @@ export const createRemoteCacheRetrieve = (
     return false;
   }
 
+  const file = getFileNameFromHash(hash);
   const { fileExists, retrieveFile } = implementation;
-  const isFileCached = await fileExists(hash);
+  const isFileCached = await fileExists(file);
 
   if (!isFileCached) {
     return false;
   }
 
-  const buffer = await retrieveFile(hash);
+  const stream = await retrieveFile(file);
   const destination = join(cacheDirectory, hash);
 
-  if (!buffer) {
+  if (!stream) {
     return false;
   }
 
-  extractZipBuffer(buffer, destination);
-  writeCommitFile(destination);
+  await extractFolder(stream, destination);
+  await writeCommitFile(destination);
 
   return true;
 };
