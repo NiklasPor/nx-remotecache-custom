@@ -81,6 +81,7 @@ After this your package is already ready for usage. Publish it to npm (or an int
 | `name`       | `NX_CACHE_NAME`             | Set to provide task runner name for logging. Overrides name provided in implementation.               |
 | `verbose`    |                             | Set to receive full stack traces whenever errors occur. Best used for debugging. **Default:** `false` |
 | `silent`     |                             | Set to mute success and info logs. **Default:** `false`                                               |
+| `hideErrors` |                             | Set to mute warning and error logs. **Default:** `false`                                              |
 | `dotenv`     |                             | Set to `false` to disable reading `.env` into `process.env`. **Default:** `true`                      |
 | `dotenvPath` |                             | Set to read `.env` files from a different folder.                                                     |
 
@@ -90,7 +91,8 @@ After this your package is already ready for usage. Publish it to npm (or an int
     "options": {
       "name": "My Storage",
       "verbose": true,
-      "silent": true
+      "silent": true,
+      "hideErrors": false,
     }
   }
 }

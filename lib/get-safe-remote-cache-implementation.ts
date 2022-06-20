@@ -10,14 +10,14 @@ const attachLogsToFileOperation =
     failure,
     verbose,
     silent,
-    errors,
+    hideErrors,
   }: {
     operation: (filename: string, ...args: OtherArgs) => Promise<T>;
     success?: (filename: string) => void;
     failure: (filename: string, error: unknown) => void;
     verbose: boolean;
     silent: boolean;
-    errors: boolean;
+    hideErrors: boolean;
   }): ((filename: string, ...args: OtherArgs) => Promise<T | null>) =>
   async (filename, ...args) => {
     try {
@@ -29,7 +29,7 @@ const attachLogsToFileOperation =
 
       return result;
     } catch (error) {
-      if (!errors) {
+      if (!hideErrors) {
         failure(filename, error);
       }
 
@@ -47,7 +47,7 @@ export const getSafeRemoteCacheImplementation = async (
 ): Promise<SafeRemoteCacheImplementation | null> => {
   const verbose = !!options.verbose;
   const silent = !!options.silent;
-  const errors = !!options.errors;
+  const hideErrors = !!options.hideErrors;
 
   try {
     const implementation = await implementationPromise;
@@ -64,7 +64,7 @@ export const getSafeRemoteCacheImplementation = async (
           log.retrieveFailure(implementation, filename, error),
         verbose,
         silent,
-        errors,
+        hideErrors,
       }),
       storeFile: attachLogsToFileOperation({
         operation: storeFile,
@@ -73,7 +73,7 @@ export const getSafeRemoteCacheImplementation = async (
           log.storeFailure(implementation, filename, error),
         verbose,
         silent,
-        errors,
+        hideErrors,
       }),
       fileExists: attachLogsToFileOperation({
         operation: fileExists,
@@ -81,7 +81,7 @@ export const getSafeRemoteCacheImplementation = async (
           log.checkFailure(implementation, filename, error),
         verbose,
         silent,
-        errors,
+        hideErrors,
       }),
     };
   } catch (error) {

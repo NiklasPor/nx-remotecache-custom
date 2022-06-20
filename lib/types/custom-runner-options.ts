@@ -17,7 +17,7 @@ export type CustomRunnerOptions<T extends Object = Object> = T &
     /**
      * Hide warning and error logs. Usefull when using it in an environment where is not setup on purpose and you don't want to see the logs.
      */
-    errors?: boolean;
+    hideErrors?: boolean;
     /**
      * Enables / disables reading `.env` files into the `proces.env`.
      *
