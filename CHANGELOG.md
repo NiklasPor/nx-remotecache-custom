@@ -15,7 +15,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Added
 
-- Added `name` task runner option and `NX_CACHE_NAME` env variable to set a custom cache name
+- Added `name` task runner option and `NXCACHE_NAME` env variable to set a custom cache name
 
 ## 1.0.0
 

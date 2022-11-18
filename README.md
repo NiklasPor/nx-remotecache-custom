@@ -78,7 +78,7 @@ After this your package is already ready for usage. Publish it to npm (or an int
 
 | Option       | Environment Variable / .env | Description                                                                                           |
 | ------------ | --------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `name`       | `NX_CACHE_NAME`             | Set to provide task runner name for logging. Overrides name provided in implementation.               |
+| `name`       | `NXCACHE_NAME`              | Set to provide task runner name for logging. Overrides name provided in implementation.               |
 | `verbose`    |                             | Set to receive full stack traces whenever errors occur. Best used for debugging. **Default:** `false` |
 | `silent`     |                             | Set to mute success and info logs. **Default:** `false`                                               |
 | `dotenv`     |                             | Set to `false` to disable reading `.env` into `process.env`. **Default:** `true`                      |

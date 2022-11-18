@@ -3,40 +3,39 @@ import { CustomRunnerOptions } from "./types/custom-runner-options";
 import { RemoteCacheImplementation } from "./types/remote-cache-implementation";
 import { SafeRemoteCacheImplementation } from "./types/safe-remote-cache-implementation";
 
-const attachLogsToFileOperation = <T, OtherArgs extends unknown[]>({
-  operation,
-  success,
-  failure,
-  verbose,
-  silent,
-}: {
-  operation: (filename: string, ...args: OtherArgs) => Promise<T>;
-  success?: (filename: string) => void;
-  failure: (filename: string, error: unknown) => void;
-  verbose: boolean;
-  silent: boolean;
-}): ((filename: string, ...args: OtherArgs) => Promise<T | null>) => async (
-  filename,
-  ...args
-) => {
-  try {
-    const result = await operation(filename, ...args);
+const attachLogsToFileOperation =
+  <T, OtherArgs extends unknown[]>({
+    operation,
+    success,
+    failure,
+    verbose,
+    silent,
+  }: {
+    operation: (filename: string, ...args: OtherArgs) => Promise<T>;
+    success?: (filename: string) => void;
+    failure: (filename: string, error: unknown) => void;
+    verbose: boolean;
+    silent: boolean;
+  }): ((filename: string, ...args: OtherArgs) => Promise<T | null>) =>
+  async (filename, ...args) => {
+    try {
+      const result = await operation(filename, ...args);
 
-    if (!silent) {
-      success?.(filename);
+      if (!silent) {
+        success?.(filename);
+      }
+
+      return result;
+    } catch (error) {
+      failure(filename, error);
+
+      if (verbose) {
+        console.error(error);
+      }
+
+      return null;
     }
-
-    return result;
-  } catch (error) {
-    failure(filename, error);
-
-    if (verbose) {
-      console.error(error);
-    }
-
-    return null;
-  }
-};
+  };
 
 export const getSafeRemoteCacheImplementation = async (
   implementationPromise: Promise<RemoteCacheImplementation>,
@@ -49,7 +48,7 @@ export const getSafeRemoteCacheImplementation = async (
     const implementation = await implementationPromise;
     const { fileExists, storeFile, retrieveFile } = implementation;
     const name =
-      process.env.NX_CACHE_NAME || options.name || implementation.name;
+      process.env.NXCACHE_NAME || options.name || implementation.name;
 
     return {
       name,
