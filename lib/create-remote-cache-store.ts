@@ -8,8 +8,12 @@ const archiveFolder = (cwd: string, folder: string): Readable =>
   Readable.from(create({ gzip: true, C: cwd }, [folder]));
 
 export const createRemoteCacheStore = (
-  safeImplementation: Promise<SafeRemoteCacheImplementation | null>
+  safeImplementation: Promise<SafeRemoteCacheImplementation | null>,
+  disabled: boolean,
 ): RemoteCache["store"] => async (hash, cacheDirectory) => {
+  if (disabled) {
+    return false;
+  }
   const implementation = await safeImplementation;
 
   if (!implementation) {

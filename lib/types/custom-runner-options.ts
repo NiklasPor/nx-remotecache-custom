@@ -7,6 +7,12 @@ export type CustomRunnerOptions<T extends Object = Object> = T &
      */
     name?: string;
     /**
+     * Sets mode to enable/disable reads and/or writes to remote.
+     *
+     * @default read-write
+     */
+    mode?: "read-write" | "read-only" | "write-only" | "disabled";
+    /**
      * Sets verbose error logging for `nx-remotecache-custom`.
      */
     verbose?: boolean;

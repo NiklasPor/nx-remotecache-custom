@@ -29,8 +29,12 @@ const writeCommitFile = (destination: string) => {
 };
 
 export const createRemoteCacheRetrieve = (
-  safeImplementation: Promise<SafeRemoteCacheImplementation | null>
+  safeImplementation: Promise<SafeRemoteCacheImplementation | null>,
+  disabled: boolean,
 ): RemoteCache["retrieve"] => async (hash, cacheDirectory) => {
+  if (disabled) {
+    return false;
+  }
   const implementation = await safeImplementation;
 
   if (!implementation) {
