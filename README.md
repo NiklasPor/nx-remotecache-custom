@@ -1,4 +1,6 @@
-[![npm package link](https://img.shields.io/npm/v/nx-remotecache-custom)](https://www.npmjs.com/package/nx-remotecache-custom)
+[![https://www.npmjs.com/package/nx-remotecache-custom](https://img.shields.io/npm/v/nx-remotecache-custom)](https://www.npmjs.com/package/nx-remotecache-custom)
+<a href="https://www.npmjs.com/package/nx-remotecache-custom" target="_blank"><img src="https://img.shields.io/npm/dw/nx-remotecache-custom?label=Installs&color=purple&logoColor=white&logo=nx" alt="Downloads" /></a>
+
 
 # nx-remotecache-custom
 
