@@ -1,4 +1,4 @@
-import { RemoteCache } from "@nrwl/workspace/src/tasks-runner/default-tasks-runner";
+import { RemoteCache } from "@nx/workspace/src/tasks-runner/default-tasks-runner";
 import { Readable } from "stream";
 import { create } from "tar";
 import { getFileNameFromHash } from "./get-file-name-from-hash";
