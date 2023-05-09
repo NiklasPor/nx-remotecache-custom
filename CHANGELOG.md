@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 4.0.0
+
+### Breaking Changes
+
+- Nx support now starts at 16.0.0 thanks to [gmfun](https://github.com/gmfun)
+
 ## 3.0.0
 
 ### Breaking Changes
