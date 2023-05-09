@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Breaking Changes
 
 - Nx support now starts at 16.0.0 thanks to [gmfun](https://github.com/gmfun)
+- Note: packages consuming this package might need to set `declaration: false` in their TSConfig
 
 ## 3.0.0
 
