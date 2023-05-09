@@ -1,4 +1,4 @@
-import { RemoteCache } from "@nrwl/workspace/src/tasks-runner/default-tasks-runner";
+import { RemoteCache } from "@nx/workspace/src/tasks-runner/default-tasks-runner";
 import { mkdir, writeFile } from "fs/promises";
 import { join } from "path";
 import { pipeline } from "stream/promises";
