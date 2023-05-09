@@ -6,9 +6,9 @@
   "typings": "index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc && cp package.json dist/package.json && cp README.md dist/README.md && cp CHANGELOG.md dist/CHANGELOG.md",
-    "release": "npm run build && cd dist && npm publish && cd ..",
-    "local-release": "npm run build && cd dist && npm publish --registry=http://localhost:4873/ && cd ..",
-    "link": "npm run build && cd dist && npm link && cd .."
+    "release": "pnpm build && cd dist && pnpm publish && cd ..",
+    "local-release": "pnpm build && cd dist && pnpm publish --registry=http://localhost:4873/ && cd ..",
+    "link": "pnpm build && cd dist && pnpm link && cd .."
   },
   "repository": {
     "type": "git",
