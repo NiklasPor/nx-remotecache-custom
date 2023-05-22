@@ -45,7 +45,7 @@ export default createCustomRunner<MyRunnerOptions>(async (options) => {
     fileExists: (filename) => myStorage.exists(filename),
 
     // retrieveFile downloads a file from your remote storage
-    retrieveFile: (filename) => myStorage.download(),
+    retrieveFile: (filename) => myStorage.download(filename),
 
     // storeFile uploads a file from a buffer to your remote storage
     storeFile: (filename, buffer) => myStorage.upload(filename, buffer),
