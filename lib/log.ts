@@ -73,3 +73,11 @@ export const checkFailure = (
       `Error: ${error?.message}`
     )
   );
+
+export const cacheCreated = ({
+  read,
+  write,
+}: {
+  read: boolean;
+  write: boolean;
+}) => log(grey(`Remote cache created. Read: ${read}. Write: ${write}.`));

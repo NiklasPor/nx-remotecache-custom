@@ -28,32 +28,34 @@ const writeCommitFile = (destination: string) => {
   return writeFile(commitFilePath, COMMIT_FILE_CONTENT);
 };
 
-export const createRemoteCacheRetrieve = (
-  safeImplementation: Promise<SafeRemoteCacheImplementation | null>
-): RemoteCache["retrieve"] => async (hash, cacheDirectory) => {
-  const implementation = await safeImplementation;
+export const createRemoteCacheRetrieve =
+  (
+    safeImplementation: Promise<SafeRemoteCacheImplementation | null>
+  ): RemoteCache["retrieve"] =>
+  async (hash, cacheDirectory) => {
+    const implementation = await safeImplementation;
 
-  if (!implementation) {
-    return false;
-  }
+    if (!implementation) {
+      return false;
+    }
 
-  const file = getFileNameFromHash(hash);
-  const { fileExists, retrieveFile } = implementation;
-  const isFileCached = await fileExists(file);
+    const file = getFileNameFromHash(hash);
+    const { fileExists, retrieveFile } = implementation;
+    const isFileCached = await fileExists(file);
 
-  if (!isFileCached) {
-    return false;
-  }
+    if (!isFileCached) {
+      return false;
+    }
 
-  const stream = await retrieveFile(file);
-  const destination = join(cacheDirectory, hash);
+    const stream = await retrieveFile(file);
+    const destination = join(cacheDirectory, hash);
 
-  if (!stream) {
-    return false;
-  }
+    if (!stream) {
+      return false;
+    }
 
-  await extractFolder(stream, destination);
-  await writeCommitFile(destination);
+    await extractFolder(stream, destination);
+    await writeCommitFile(destination);
 
-  return true;
-};
+    return true;
+  };

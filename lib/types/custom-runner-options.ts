@@ -24,4 +24,16 @@ export type CustomRunnerOptions<T extends Object = Object> = T &
      * Path to folder containing `.env` files. Optional.
      */
     dotenvPath?: string;
+    /**
+     * Enable / disable reading from the remote cache.
+     *
+     * @default true
+     */
+    read?: boolean;
+    /**
+     * Enable / disable writing to the remote cache.
+     *
+     * @default true
+     */
+    write?: boolean;
   };
