@@ -21,9 +21,9 @@ const createRemoteCache = (
   );
 
   const read = process.env.NXCACHE_READ ?
-    process.env.NXCACHE_READ !== "false" : (options.read || true);
+    process.env.NXCACHE_READ !== "false" : (options.read ?? true);
   const write = process.env.NXCACHE_WRITE ?
-    process.env.NXCACHE_WRITE !== "false" : (options.write || true);
+    process.env.NXCACHE_WRITE !== "false" : (options.write ?? true);
 
   if (options.verbose) {
     log.cacheCreated({ read, write });
