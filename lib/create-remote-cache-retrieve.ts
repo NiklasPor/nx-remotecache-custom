@@ -5,6 +5,7 @@ import { pipeline } from "stream/promises";
 import { extract } from "tar";
 import { getFileNameFromHash } from "./get-file-name-from-hash";
 import { SafeRemoteCacheImplementation } from "./types/safe-remote-cache-implementation";
+import { filterMachineId } from "./filter-machine-id";
 
 const COMMIT_FILE_EXTENSION = ".commit";
 const COMMIT_FILE_CONTENT = "true";
@@ -19,6 +20,7 @@ const extractFolder = async (
     extract({
       C: destination,
       strip: 1,
+      filter: filterMachineId
     })
   );
 };
