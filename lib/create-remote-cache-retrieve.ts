@@ -2,6 +2,7 @@ import { RemoteCache } from "@nx/workspace/src/tasks-runner/default-tasks-runner
 import { mkdir, writeFile } from "fs/promises";
 import { join } from "path";
 import { pipeline } from "stream/promises";
+import { Readable } from "stream";
 import { extract } from "tar";
 import { getFileNameFromHash } from "./get-file-name-from-hash";
 import { SafeRemoteCacheImplementation } from "./types/safe-remote-cache-implementation";
@@ -16,7 +17,7 @@ const extractFolder = async (
 ) => {
   await mkdir(destination, { recursive: true });
   return await pipeline(
-    stream,
+    Readable.from(stream),
     extract({
       C: destination,
       strip: 1,
