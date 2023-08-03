@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 4.2.1
+
+### Fixed
+
+- Fixed `zlib: unexpected end of file` error for version Node 18. Thanks to [stixx200](https://github.com/stixx200).
+
 ## 4.2.0
 
 ### Fixed
