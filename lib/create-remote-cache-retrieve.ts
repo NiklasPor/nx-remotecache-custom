@@ -6,14 +6,15 @@ import { Readable } from "stream";
 import { extract } from "tar";
 import { getFileNameFromHash } from "./get-file-name-from-hash";
 import { SafeRemoteCacheImplementation } from "./types/safe-remote-cache-implementation";
-import { filterMachineId } from "./filter-machine-id";
+import { createFilterMachineId } from "./filter-machine-id";
 
 const COMMIT_FILE_EXTENSION = ".commit";
 const COMMIT_FILE_CONTENT = "true";
 
 const extractFolder = async (
   stream: NodeJS.ReadableStream,
-  destination: string
+  destination: string,
+  hash: string
 ) => {
   await mkdir(destination, { recursive: true });
   return await pipeline(
@@ -21,7 +22,7 @@ const extractFolder = async (
     extract({
       C: destination,
       strip: 1,
-      filter: filterMachineId
+      filter: createFilterMachineId(hash)
     })
   );
 };
@@ -57,7 +58,7 @@ export const createRemoteCacheRetrieve =
       return false;
     }
 
-    await extractFolder(stream, destination);
+    await extractFolder(stream, destination, hash);
     await writeCommitFile(destination);
 
     return true;

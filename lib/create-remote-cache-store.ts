@@ -3,10 +3,10 @@ import { Readable } from "stream";
 import { create } from "tar";
 import { getFileNameFromHash } from "./get-file-name-from-hash";
 import { SafeRemoteCacheImplementation } from "./types/safe-remote-cache-implementation";
-import { filterMachineId } from "./filter-machine-id";
+import { createFilterMachineId } from "./filter-machine-id";
 
 const archiveFolder = (cwd: string, folder: string): Readable =>
-  Readable.from(create({ gzip: true, C: cwd, filter: filterMachineId }, [folder]));
+  Readable.from(create({ gzip: true, C: cwd, filter: createFilterMachineId(folder) }, [folder]));
 
 export const createRemoteCacheStore = (
   safeImplementation: Promise<SafeRemoteCacheImplementation | null>
