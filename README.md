@@ -17,6 +17,13 @@ and `createCustomRunner()` is taking care of everything else. Not convinced yet?
 - Automagically zip all the cached files ➡ Minimal storage & traffic consumption 📦
 - Provide a small defined and documented API 📚
 
+## Compatability
+
+|  Nx        | Remote Cache |
+| ---------- | ------------ |
+|  >= 16.9.0 |  >= 5.0.0    |
+|  < 16.9.0  |  < 5.0.0     |
+
 ## Usage
 
 ```sh

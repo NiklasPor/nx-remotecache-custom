@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 5.0.0
+
+### Breaking Change
+
+- Nx support now starts at `16.9.0` (due to breaking internal cache changes).
+
+### Fixed
+
+- No incorrect files are filtered out anymore. Fixes [#23](https://github.com/NiklasPor/nx-remotecache-custom/issues/23).
+
 ## 4.2.1
 
 ### Fixed
