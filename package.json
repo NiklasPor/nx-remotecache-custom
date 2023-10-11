@@ -1,6 +1,6 @@
 {
   "name": "nx-remotecache-custom",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Build custom caching for @nrwl/nx in a few lines of code",
   "main": "index.js",
   "typings": "index.d.ts",
