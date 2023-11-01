@@ -29,9 +29,9 @@
   },
   "homepage": "https://github.com/NiklasPor/nx-remotecache-custom#readme",
   "devDependencies": {
-    "@nx/workspace": "^16.9.0",
     "@types/tar": "^6.1.3",
     "@types/yargs": "^17.0.13",
+    "nx": "^17.0.0",
     "typescript": "^5.1.0"
   },
   "dependencies": {
@@ -40,6 +40,6 @@
     "tar": "^6.1.12"
   },
   "peerDependencies": {
-    "@nx/workspace": ">=16.9.0"
+    "nx": ">=17.0.0"
   }
 }
