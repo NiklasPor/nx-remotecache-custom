@@ -9,11 +9,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - Major versioning is now synced to nx.
 - Nx support now starts at `17.0.0`. Thanks to [Steven Rathbauer](https://github.com/rathpc).
-- Dev/peer dependency switched from `@nx/workspace` to `nx`. Thanks to [Steven Rathbauer](https://github.com/rathpc).
 
 ### Fixed
 
-- Nx dev/peer dependency switched from `@nx/workspace` to `nx`. Fixes [#27](https://github.com/NiklasPor/nx-remotecache-custom/issues/27).
+- Nx dev/peer dependency switched from `@nx/workspace` to `nx`. Fixes [#27](https://github.com/NiklasPor/nx-remotecache-custom/issues/27). Thanks to [Steven Rathbauer](https://github.com/rathpc).
 
 ## 5.0.1
 
