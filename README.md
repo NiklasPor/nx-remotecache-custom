@@ -19,11 +19,11 @@ and `createCustomRunner()` is taking care of everything else. Not convinced yet?
 
 ## Compatability
 
-|  Nx             | Remote Cache  |
-| --------------- | ------------- |
-|  >= 17.0.0      |  >= 6.0.0     |
-|  >= 16.9.0 < 17 |  >= 5.0.0 < 6 |
-|  < 16.9.0       |  < 5.0.0      |
+|  Nx               | Remote Cache     |
+| ----------------- | ---------------- |
+|  `>= 17.0.0 < 18` | `>= 17.0.0 < 18` |
+|  `>= 16.9.0 < 17` | `>= 5.0.0 < 17`  |
+|  `< 16.9.0`       | `< 5.0.0`        |
 
 ## Usage
 
