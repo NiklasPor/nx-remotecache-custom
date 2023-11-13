@@ -7,8 +7,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Breaking Change
 
-- Major versioning is now synced to nx
-- Nx support now starts at `17.0.0` and dev/peer dependency switched from `@nx/workspace` to `nx`.
+- Major versioning is now synced to nx.
+- Nx support now starts at `17.0.0` and dev/peer dependency switched from `@nx/workspace` to `nx`. Thanks to [Steven Rathbauer](https://github.com/rathpc).
 
 ### Fixed
 
