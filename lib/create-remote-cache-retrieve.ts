@@ -1,5 +1,5 @@
-import { RemoteCache } from "nx/src/tasks-runner/default-tasks-runner";
 import { mkdir, writeFile } from "fs/promises";
+import type { RemoteCache } from "nx/src/tasks-runner/default-tasks-runner";
 import { join } from "path";
 import { Readable } from "stream";
 import { pipeline } from "stream/promises";

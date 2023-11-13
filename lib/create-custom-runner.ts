@@ -1,4 +1,4 @@
-import { RemoteCache } from "nx/src/tasks-runner/default-tasks-runner";
+import type { RemoteCache } from "nx/src/tasks-runner/default-tasks-runner";
 import defaultTasksRunner from "nx/tasks-runners/default";
 import { createRemoteCacheRetrieve } from "./create-remote-cache-retrieve";
 import { createRemoteCacheStore } from "./create-remote-cache-store";
@@ -20,10 +20,12 @@ const createRemoteCache = (
     options
   );
 
-  const read = process.env.NXCACHE_READ ?
-    process.env.NXCACHE_READ !== "false" : (options.read ?? true);
-  const write = process.env.NXCACHE_WRITE ?
-    process.env.NXCACHE_WRITE !== "false" : (options.write ?? true);
+  const read = process.env.NXCACHE_READ
+    ? process.env.NXCACHE_READ !== "false"
+    : options.read ?? true;
+  const write = process.env.NXCACHE_WRITE
+    ? process.env.NXCACHE_WRITE !== "false"
+    : options.write ?? true;
 
   if (options.verbose) {
     log.cacheCreated({ read, write });

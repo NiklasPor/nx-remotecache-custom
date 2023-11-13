@@ -1,4 +1,4 @@
-import { RemoteCache } from "nx/src/tasks-runner/default-tasks-runner";
+import type { RemoteCache } from "nx/src/tasks-runner/default-tasks-runner";
 import { Readable } from "stream";
 import { create } from "tar";
 import { createFilterSourceFile } from "./create-filter-source-file";
