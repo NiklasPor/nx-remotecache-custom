@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   chalk:
     specifier: ^4.1.2
@@ -918,7 +922,3 @@ packages:
       y18n: 5.0.8
       yargs-parser: 21.1.1
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
