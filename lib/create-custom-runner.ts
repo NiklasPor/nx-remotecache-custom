@@ -22,19 +22,26 @@ const createRemoteCache = (
     ? process.env.NXCACHE_WRITE !== "false"
     : options.write ?? true;
 
-  // Only try and create a cache if a relevant setting is enabled
-  const safeImplementation = read || write ? getSafeRemoteCacheImplementation(
+  // Do not even create the cache if both read and write are disabled
+  if (!read && !write) {
+    return {
+      retrieve: cacheNoop,
+      store: cacheNoop,
+    };
+  }
+
+  const safeImplementation = getSafeRemoteCacheImplementation(
     implementation,
     options
-  ) : null;
+  );
 
   if (options.verbose) {
     log.cacheCreated({ read, write });
   }
 
   return {
-    retrieve: read && safeImplementation ? createRemoteCacheRetrieve(safeImplementation) : cacheNoop,
-    store: write && safeImplementation ? createRemoteCacheStore(safeImplementation) : cacheNoop,
+    retrieve: read ? createRemoteCacheRetrieve(safeImplementation) : cacheNoop,
+    store: write ? createRemoteCacheStore(safeImplementation) : cacheNoop,
   };
 };
 
