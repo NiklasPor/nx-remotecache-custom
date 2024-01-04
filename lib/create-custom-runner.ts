@@ -1,3 +1,4 @@
+import { Task } from "nx/src/config/task-graph";
 import type { RemoteCache } from "nx/src/tasks-runner/default-tasks-runner";
 import defaultTasksRunner from "nx/tasks-runners/default";
 import { createRemoteCacheRetrieve } from "./create-remote-cache-retrieve";
@@ -48,7 +49,8 @@ const createRemoteCache = (
 export const createCustomRunner =
   <T extends Object>(
     setup: (
-      options: CustomRunnerOptions<T>
+      options: CustomRunnerOptions<T>,
+      tasks: Task[]
     ) => Promise<RemoteCacheImplementation>
   ): DefaultTasksRunner =>
   (tasks, options, context) =>
@@ -57,7 +59,7 @@ export const createCustomRunner =
       {
         ...options,
         remoteCache: createRemoteCache(
-          setup(options as CustomRunnerOptions<T>),
+          setup(options as CustomRunnerOptions<T>, tasks),
           options
         ),
       },
