@@ -15,11 +15,6 @@ const createRemoteCache = (
   implementation: Promise<RemoteCacheImplementation>,
   options: CustomRunnerOptions
 ): RemoteCache => {
-  const safeImplementation = getSafeRemoteCacheImplementation(
-    implementation,
-    options
-  );
-
   const read = process.env.NXCACHE_READ
     ? process.env.NXCACHE_READ !== "false"
     : options.read ?? true;
@@ -27,13 +22,19 @@ const createRemoteCache = (
     ? process.env.NXCACHE_WRITE !== "false"
     : options.write ?? true;
 
+  // Only try and create a cache if a relevant setting is enabled
+  const safeImplementation = read || write ? getSafeRemoteCacheImplementation(
+    implementation,
+    options
+  ) : null;
+
   if (options.verbose) {
     log.cacheCreated({ read, write });
   }
 
   return {
-    retrieve: read ? createRemoteCacheRetrieve(safeImplementation) : cacheNoop,
-    store: write ? createRemoteCacheStore(safeImplementation) : cacheNoop,
+    retrieve: read && safeImplementation ? createRemoteCacheRetrieve(safeImplementation) : cacheNoop,
+    store: write && safeImplementation ? createRemoteCacheStore(safeImplementation) : cacheNoop,
   };
 };
 
