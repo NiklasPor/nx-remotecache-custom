@@ -1,5 +1,7 @@
 [![https://www.npmjs.com/package/nx-remotecache-custom](https://img.shields.io/npm/v/nx-remotecache-custom)](https://www.npmjs.com/package/nx-remotecache-custom)
 <a href="https://www.npmjs.com/package/nx-remotecache-custom" target="_blank"><img src="https://img.shields.io/npm/dw/nx-remotecache-custom?label=Installs&color=purple&logoColor=white&logo=nx" alt="Downloads" /></a>
+[![Sponsored by LastBIM](https://img.shields.io/badge/Sponsored_by-LastBIM-6887DA)](https://lastbim.com)
+
 
 # nx-remotecache-custom
 
