@@ -3,13 +3,19 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 17.1.1
+
+### Chore
+
+- Update README.md & CHANGELOG.md
+
 ## 17.1.0
 
-## Added
+### Added
 
 - Nx Tasks are now available in the callback passed to `createCustomRunner`. Fixes [#30](https://github.com/NiklasPor/nx-remotecache-custom/issues/30).
 
-## Fixed
+### Fixed
 
 - Prevent call to `getSafeRemoteCacheImplementation` if both `read` and `write` are disabled. Thanks to [Charlie Croom](https://github.com/comp615).
 - Fix filter source implementation to work OS independently. Fixes [#31](https://github.com/NiklasPor/nx-remotecache-custom/issues/31).
