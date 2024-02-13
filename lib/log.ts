@@ -1,5 +1,6 @@
 import { green, grey, red, yellow } from "chalk";
 import { RemoteCacheImplementation } from "./types/remote-cache-implementation";
+import { SafeRemoteCacheImplementation } from './types/safe-remote-cache-implementation';
 
 const DELIMITER_LENGTH = 78;
 const DELIMITER = Array.from({ length: DELIMITER_LENGTH }, () => "-").join("");
@@ -15,7 +16,7 @@ export const retrieveSuccess = (
 ) => log(formatSection(`Remote cache hit: ${green(name)}`, `File: ${file}`));
 
 export const retrieveFailure = (
-  { name }: RemoteCacheImplementation,
+  { name }: RemoteCacheImplementation | SafeRemoteCacheImplementation,
   file: string,
   error: any
 ) =>
