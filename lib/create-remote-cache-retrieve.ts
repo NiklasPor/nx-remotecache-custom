@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "fs/promises";
+import { mkdir, writeFile, rm } from "fs/promises";
 import type { RemoteCache } from "nx/src/tasks-runner/default-tasks-runner";
 import { join } from "path";
 import { Readable } from "stream";
@@ -7,6 +7,7 @@ import { extract } from "tar";
 import { createFilterSourceFile } from "./create-filter-source-file";
 import { getFileNameFromHash } from "./get-file-name-from-hash";
 import { SafeRemoteCacheImplementation } from "./types/safe-remote-cache-implementation";
+import * as log from "./log";
 
 const COMMIT_FILE_EXTENSION = ".commit";
 const COMMIT_FILE_CONTENT = "true";
@@ -32,6 +33,11 @@ const writeCommitFile = (destination: string) => {
   return writeFile(commitFilePath, COMMIT_FILE_CONTENT);
 };
 
+const deleteCommitFile = (destination: string) => {
+  const commitFilePath = destination + COMMIT_FILE_EXTENSION;
+  return rm(commitFilePath, { force: true, maxRetries: 10 });
+};
+
 export const createRemoteCacheRetrieve =
   (
     safeImplementation: Promise<SafeRemoteCacheImplementation | null>
@@ -44,22 +50,34 @@ export const createRemoteCacheRetrieve =
     }
 
     const file = getFileNameFromHash(hash);
-    const { fileExists, retrieveFile } = implementation;
-    const isFileCached = await fileExists(file);
-
-    if (!isFileCached) {
-      return false;
-    }
-
-    const stream = await retrieveFile(file);
     const destination = join(cacheDirectory, hash);
 
-    if (!stream) {
+    try {
+      const {fileExists, retrieveFile} = implementation;
+      const isFileCached = await fileExists(file);
+
+      if (!isFileCached) {
+        return false;
+      }
+
+      const stream = await retrieveFile(file);
+
+      if (!stream) {
+        return false;
+      }
+
+      await extractFolder(stream, destination, hash);
+      await writeCommitFile(destination);
+
+      return true;
+    } catch (error) {
+
+      log.retrieveFailure(implementation, file, error);
+
+      await rm(destination, { force: true, recursive: true, maxRetries: 10 });
+      await deleteCommitFile(destination);
+
+
       return false;
     }
-
-    await extractFolder(stream, destination, hash);
-    await writeCommitFile(destination);
-
-    return true;
   };
