@@ -2,7 +2,6 @@
 <a href="https://www.npmjs.com/package/nx-remotecache-custom" target="_blank"><img src="https://img.shields.io/npm/dw/nx-remotecache-custom?label=Installs&color=purple&logoColor=white&logo=nx" alt="Downloads" /></a>
 [![Sponsored by LastBIM](https://img.shields.io/badge/Sponsored_by-LastBIM-6887DA)](https://lastbim.com)
 
-
 # nx-remotecache-custom
 
 `nx-remotecache-custom` is a simple package which includes a helper function to create custom nx remote cache implementations. You'll only need to add functions for:
@@ -23,6 +22,7 @@ and `createCustomRunner()` is taking care of everything else. Not convinced yet?
 
 |  Nx               | Remote Cache     |
 | ----------------- | ---------------- |
+|  `>= 18.0.0 < 19` | `>= 18.0.0 < 19` |
 |  `>= 17.0.0 < 18` | `>= 17.0.0 < 18` |
 |  `>= 16.9.0 < 17` | `>= 5.0.0 < 17`  |
 |  `< 16.9.0`       | `< 5.0.0`        |
