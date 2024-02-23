@@ -1,11 +1,10 @@
-import { Task } from "nx/src/config/task-graph";
-import type { RemoteCache } from "nx/src/tasks-runner/default-tasks-runner";
 import defaultTasksRunner from "nx/tasks-runners/default";
 import { createRemoteCacheRetrieve } from "./create-remote-cache-retrieve";
 import { createRemoteCacheStore } from "./create-remote-cache-store";
 import { getSafeRemoteCacheImplementation } from "./get-safe-remote-cache-implementation";
 import * as log from "./log";
 import { CustomRunnerOptions } from "./types/custom-runner-options";
+import { NxRemoteCache, NxTask } from "./types/nx";
 import { RemoteCacheImplementation } from "./types/remote-cache-implementation";
 
 type DefaultTasksRunner = typeof defaultTasksRunner;
@@ -15,7 +14,7 @@ const cacheNoop = async () => false;
 const createRemoteCache = (
   implementation: Promise<RemoteCacheImplementation>,
   options: CustomRunnerOptions
-): RemoteCache => {
+): NxRemoteCache => {
   const read = process.env.NXCACHE_READ
     ? process.env.NXCACHE_READ !== "false"
     : options.read ?? true;
@@ -50,7 +49,7 @@ export const createCustomRunner =
   <T extends Object>(
     setup: (
       options: CustomRunnerOptions<T>,
-      tasks: Task[]
+      tasks: NxTask[]
     ) => Promise<RemoteCacheImplementation>
   ): DefaultTasksRunner =>
   (tasks, options, context) =>

@@ -1,8 +1,8 @@
-import type { RemoteCache } from "nx/src/tasks-runner/default-tasks-runner";
 import { Readable } from "stream";
 import { create } from "tar";
 import { createFilterSourceFile } from "./create-filter-source-file";
 import { getFileNameFromHash } from "./get-file-name-from-hash";
+import { NxRemoteCache } from "./types/nx";
 import { SafeRemoteCacheImplementation } from "./types/safe-remote-cache-implementation";
 
 const archiveFolder = (cwd: string, hash: string): Readable =>
@@ -13,7 +13,7 @@ const archiveFolder = (cwd: string, hash: string): Readable =>
 export const createRemoteCacheStore =
   (
     safeImplementation: Promise<SafeRemoteCacheImplementation | null>
-  ): RemoteCache["store"] =>
+  ): NxRemoteCache["store"] =>
   async (hash, cacheDirectory) => {
     const implementation = await safeImplementation;
 

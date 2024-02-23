@@ -1,7 +1,7 @@
-import type { DefaultTasksRunnerOptions } from "nx/src/tasks-runner/default-tasks-runner";
+import { NxDefaultTasksRunnerOptions } from "./nx";
 
 export type CustomRunnerOptions<T extends Object = Object> = T &
-  DefaultTasksRunnerOptions & {
+  NxDefaultTasksRunnerOptions & {
     /**
      * Sets task runner name for logging.
      */

@@ -1,11 +1,12 @@
 import { mkdir, writeFile } from "fs/promises";
-import type { RemoteCache } from "nx/src/tasks-runner/default-tasks-runner";
+
 import { join } from "path";
 import { Readable } from "stream";
 import { pipeline } from "stream/promises";
 import { extract } from "tar";
 import { createFilterSourceFile } from "./create-filter-source-file";
 import { getFileNameFromHash } from "./get-file-name-from-hash";
+import { NxRemoteCache } from "./types/nx";
 import { SafeRemoteCacheImplementation } from "./types/safe-remote-cache-implementation";
 
 const COMMIT_FILE_EXTENSION = ".commit";
@@ -35,7 +36,7 @@ const writeCommitFile = (destination: string) => {
 export const createRemoteCacheRetrieve =
   (
     safeImplementation: Promise<SafeRemoteCacheImplementation | null>
-  ): RemoteCache["retrieve"] =>
+  ): NxRemoteCache["retrieve"] =>
   async (hash, cacheDirectory) => {
     const implementation = await safeImplementation;
 
