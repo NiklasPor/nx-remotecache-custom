@@ -114,4 +114,10 @@ After this your package is already ready for usage. Publish it to npm (or an int
 | Runner                                                                     | Storage             |
 | -------------------------------------------------------------------------- | ------------------- |
 | [nx-remotecache-azure](https://www.npmjs.com/package/nx-remotecache-azure) |  Azure Blob Storage |
+| [@pellegrims/nx-remotecache-s3](https://www.npmjs.com/package/@pellegrims/nx-remotecache-s3) |  S3 Storage |
 | [nx-remotecache-minio](https://www.npmjs.com/package/nx-remotecache-minio) |  MinIO Storage      |
+| [@vercel/remote-nx](https://www.npmjs.com/package/@vercel/remote-nx)       |  Vercel Cache       |
+| [nx-remotecache-redis](https://www.npmjs.com/package/nx-remotecache-redis) |  Redis Cache        |
+
+... and [many more!](https://www.npmjs.com/browse/depended/nx-remotecache-custom)
+
