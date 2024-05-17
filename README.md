@@ -22,6 +22,7 @@ and `createCustomRunner()` is taking care of everything else. Not convinced yet?
 
 |  Nx               | Remote Cache     |
 | ----------------- | ---------------- |
+|  `>= 19.0.0 < 20` | `>= 19.0.0 < 20` |
 |  `>= 18.0.0 < 19` | `>= 18.0.0 < 19` |
 |  `>= 17.0.0 < 18` | `>= 17.0.0 < 18` |
 |  `>= 16.9.0 < 17` | `>= 5.0.0 < 17`  |
@@ -111,13 +112,12 @@ After this your package is already ready for usage. Publish it to npm (or an int
 
 ## All Custom Runners
 
-| Runner                                                                     | Storage             |
-| -------------------------------------------------------------------------- | ------------------- |
-| [nx-remotecache-azure](https://www.npmjs.com/package/nx-remotecache-azure) |  Azure Blob Storage |
-| [@pellegrims/nx-remotecache-s3](https://www.npmjs.com/package/@pellegrims/nx-remotecache-s3) |  S3 Storage |
-| [nx-remotecache-minio](https://www.npmjs.com/package/nx-remotecache-minio) |  MinIO Storage      |
-| [@vercel/remote-nx](https://www.npmjs.com/package/@vercel/remote-nx)       |  Vercel Cache       |
-| [nx-remotecache-redis](https://www.npmjs.com/package/nx-remotecache-redis) |  Redis Cache        |
+| Runner                                                                                       | Storage             |
+| -------------------------------------------------------------------------------------------- | ------------------- |
+| [nx-remotecache-azure](https://www.npmjs.com/package/nx-remotecache-azure)                   |  Azure Blob Storage |
+| [@pellegrims/nx-remotecache-s3](https://www.npmjs.com/package/@pellegrims/nx-remotecache-s3) |  S3 Storage         |
+| [nx-remotecache-minio](https://www.npmjs.com/package/nx-remotecache-minio)                   |  MinIO Storage      |
+| [@vercel/remote-nx](https://www.npmjs.com/package/@vercel/remote-nx)                         | Vercel Cache        |
+| [nx-remotecache-redis](https://www.npmjs.com/package/nx-remotecache-redis)                   | Redis Cache         |
 
 ... and [many more!](https://www.npmjs.com/browse/depended/nx-remotecache-custom)
-
