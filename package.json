@@ -37,7 +37,7 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "dotenv": "^16.0.3",
-    "tar": "^6.1.12"
+    "tar": "^6.2.1"
   },
   "peerDependencies": {
     "nx": "^19.0.0"
