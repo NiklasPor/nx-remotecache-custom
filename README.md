@@ -1,8 +1,19 @@
+![Static Badge](https://img.shields.io/badge/Status-Deprecated-red)
 [![https://www.npmjs.com/package/nx-remotecache-custom](https://img.shields.io/npm/v/nx-remotecache-custom)](https://www.npmjs.com/package/nx-remotecache-custom)
 <a href="https://www.npmjs.com/package/nx-remotecache-custom" target="_blank"><img src="https://img.shields.io/npm/dw/nx-remotecache-custom?label=Installs&color=purple&logoColor=white&logo=nx" alt="Downloads" /></a>
 [![Sponsored by LastBIM](https://img.shields.io/badge/Sponsored_by-LastBIM-6887DA)](https://lastbim.com)
 
-# nx-remotecache-custom
+# The future of `nx-remotecache-*`
+
+Nrwl Nx just introduced us to **Powerpack**. It's the clear successor of the remote cache setup and officially supports custom caching solutions. This will mark the end of the `nx-remotecache-*` packages as custom caching solutions based on the filesystem won't work anymore starting with Nx 21.
+
+Powerpack fills exactly the void that `nx-remotecache-custom` filled. Therefore I'm happy to give this topic back to the creators behind Nx. Thanks for the great ride – we reached over 114,000 weekly downloads on npm as I'm writing this 🥳
+
+Feel free to read the [Introduction to Powerpack](https://nx.dev/blog/evolving-nx#introducing-nx-powerpack) by Jeff yourself. If you have any further questions checkout the pinned GitHub [issue](https://github.com/NiklasPor/nx-remotecache-custom/issues/48).
+
+Cheers, Niklas 👋
+
+## nx-remotecache-custom
 
 `nx-remotecache-custom` is a simple package which includes a helper function to create custom nx remote cache implementations. You'll only need to add functions for:
 
@@ -28,7 +39,7 @@ and `createCustomRunner()` is taking care of everything else. Not convinced yet?
 |  `>= 16.9.0 < 17` | `>= 5.0.0 < 17`  |
 |  `< 16.9.0`       | `< 5.0.0`        |
 
-## Usage
+### Usage
 
 ```sh
 npm i nx-remotecache-custom
@@ -86,7 +97,7 @@ After this your package is already ready for usage. Publish it to npm (or an int
 
 > For a more in-depth code example you can take a look at the implementation of [nx-remotecache-azure](https://github.com/NiklasPor/nx-remotecache-azure) which uses this package to implement a nx cache on the Azure Blob Storage.
 
-## Advanced Configuration
+### Advanced Configuration
 
 | Option       | Environment Variable / .env | Description                                                                                           |
 | ------------ | --------------------------- | ----------------------------------------------------------------------------------------------------- |
@@ -110,7 +121,7 @@ After this your package is already ready for usage. Publish it to npm (or an int
 }
 ```
 
-## All Custom Runners
+### All Custom Runners
 
 | Runner                                                                                       | Storage             |
 | -------------------------------------------------------------------------------------------- | ------------------- |
