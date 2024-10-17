@@ -33,6 +33,8 @@ and `createCustomRunner()` is taking care of everything else. Not convinced yet?
 
 |  Nx               | Remote Cache     |
 | ----------------- | ---------------- |
+|  `>= 21`          | `Deprecated`     |
+|  `>= 20.0.0 < 21` | `>= 20.0.0`      |
 |  `>= 19.0.0 < 20` | `>= 19.0.0 < 20` |
 |  `>= 18.0.0 < 19` | `>= 18.0.0 < 19` |
 |  `>= 17.0.0 < 18` | `>= 17.0.0 < 18` |

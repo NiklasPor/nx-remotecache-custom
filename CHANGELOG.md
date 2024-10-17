@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 20.0.0
+
+## Breaking Changes
+
+- Nx support starts at 20.0.0
+- Version 20 will be the last supported version of this package, as [Nx introduced powerpack](https://nx.dev/blog/introducing-nx-powerpack), which replaces custom runners.
+
 ## 19.0.0
 
 ## Breaking Changes
