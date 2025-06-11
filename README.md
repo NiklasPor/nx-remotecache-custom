@@ -13,6 +13,9 @@ Feel free to read the [Introduction to Powerpack](https://nx.dev/blog/evolving-n
 
 Cheers, Niklas 👋
 
+## Critical Vulnerability: CVE-2025-36852
+Due to the way remote caching with shared buckets works, cache poisoning is possible via anything that runs pipelines on untrusted code (e.g. a pull request). You can read-up on the vulnerability in [this document](https://nx.app/files/cve-2025-06) from NX or [here](https://nvd.nist.gov/vuln/detail/CVE-2025-36852) on nist. There's **no planned fix** for this vulnerability. I still recommend to use the official solution powerpack by Nx instead.
+
 ## nx-remotecache-custom
 
 `nx-remotecache-custom` is a simple package which includes a helper function to create custom nx remote cache implementations. You'll only need to add functions for:
